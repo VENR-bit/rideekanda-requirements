@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist Admin</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="login-screen">
+        <div class="login-container">
+            <h2>Admin Login</h2>
+            <p style="color:var(--text-muted); margin-bottom:20px; font-size:0.9rem;">Sign in to manage your wishlist</p>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required placeholder="Your password">
+                </div>
+                <button type="submit" class="btn" style="width:100%; margin-top:8px;">Sign In</button>
+            </form>
+            <p style="margin-top:16px; font-size:0.8rem; color:var(--text-muted);"><a href="index.html" style="color:var(--accent);">&larr; Back to wishlist</a></p>
+        </div>
+    </div>
+    <div id="admin-panel" class="admin-panel" style="display:none;">
+        <div class="container">
+            <div class="admin-header">
+                <div>
+                    <h2>Manage Wishlist</h2>
+                    <p style="color:var(--text-muted); font-size:0.9rem;" id="user-email"></p>
+                </div>
+                <div style="display:flex; gap:8px;">
+                    <a href="index.html" class="btn btn-outline btn-small">View Site</a>
+                    <button class="btn btn-small btn-outline" onclick="logout()">Sign Out</button>
+                </div>
+            </div>
+            <div class="add-item-form">
+                <h3 id="form-title">Add New Item</h3>
+                <form id="item-form">
+                    <input type="hidden" id="edit-id">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="item-name">Item Name *</label>
+                            <input type="text" id="item-name" required placeholder="e.g. Sony WH-1000XM5">
+                        </div>
+                        <div class="form-group">
+                            <label for="item-price">Approx. Price ($) *</label>
+                            <input type="number" id="item-price" required min="0" step="0.01" placeholder="299.99">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="item-desc">Description</label>
+                        <textarea id="item-desc" placeholder="Wireless noise-cancelling headphones..."></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="item-qty">Quantity</label>
+                            <input type="number" id="item-qty" min="1" value="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="item-image">Image</label>
+                            <input type="file" id="item-image" accept="image/*">
+                            <img id="image-preview" class="image-preview" alt="Preview">
+                        </div>
+                    </div>
+                    <div style="margin-top:20px; display:flex; gap:8px;">
+                        <button type="submit" class="btn" id="submit-btn">Add Item</button>
+                        <button type="button" class="btn btn-outline" id="cancel-edit-btn" style="display:none;" onclick="cancelEdit()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+            <h3 style="margin-bottom:16px;">Current Items</h3>
+            <div id="admin-items" class="admin-items-grid">
+                <div class="loading-spinner">
+                    <div class="spinner"></div>
+                    <p>Loading items...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="toast" class="toast"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
