@@ -150,7 +150,7 @@ async function loadAdminItems() {
             <div class="admin-card-body">
                 <h4>${escapeHtml(item.name)}</h4>
                 <p>${escapeHtml(item.description || 'No description')}</p>
-                <p><strong>LKR ${Number(item.price).toFixed(2)}</strong> &times; ${item.quantity} = <strong style="color:var(--accent);">LKR ${(Number(item.price) * (Number(item.quantity) || 1)).toFixed(2)}</strong></p>
+                <p><strong>LKR ${formatCurrency(item.price)}</strong> &times; ${item.quantity} = <strong style="color:var(--accent);">LKR ${formatCurrency(Number(item.price) * (Number(item.quantity) || 1))}</strong></p>
             </div>
             <div class="admin-card-actions">
                 <button class="btn btn-small btn-outline" onclick='editItem(${JSON.stringify(item).replace(/'/g, "&#39;")})'>Edit</button>
@@ -214,6 +214,10 @@ function escapeHtml(str) {
     const div = document.createElement('div');
     div.textContent = str;
     return div.innerHTML;
+}
+
+function formatCurrency(num) {
+    return Number(num).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
 function showToast(message, isError = false) {
