@@ -63,7 +63,7 @@ function renderCards(items) {
                 <div class="card-pricing">
                     <div class="pricing-row">
                         <span class="pricing-label">Unit Price</span>
-                        <span class="pricing-value">LKR ${unitPrice.toFixed(2)}</span>
+                        <span class="pricing-value">LKR ${formatCurrency(unitPrice)}</span>
                     </div>
                     <div class="pricing-row">
                         <span class="pricing-label">Quantity</span>
@@ -71,7 +71,7 @@ function renderCards(items) {
                     </div>
                     <div class="pricing-row pricing-total">
                         <span class="pricing-label">Total</span>
-                        <span class="pricing-value">LKR ${totalCost.toFixed(2)}</span>
+                        <span class="pricing-value">LKR ${formatCurrency(totalCost)}</span>
                     </div>
                 </div>
             </div>
@@ -143,11 +143,15 @@ function updateGrandTotal(items) {
 
     document.getElementById('summary-items-count').textContent = items.length;
     document.getElementById('summary-qty-count').textContent = totalItems;
-    document.getElementById('summary-grand-total').textContent = `LKR ${grandTotal.toFixed(2)}`;
+    document.getElementById('summary-grand-total').textContent = `LKR ${formatCurrency(grandTotal)}`;
     summaryEl.style.display = 'flex';
 }
 
 // ===== Utility =====
+function formatCurrency(num) {
+    return Number(num).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
 function escapeHtml(str) {
     const div = document.createElement('div');
     div.textContent = str;
