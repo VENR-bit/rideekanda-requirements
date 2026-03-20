@@ -164,26 +164,88 @@ header h1 {
     margin-bottom: 16px;
 }
 
-.card-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* ===== Card Pricing Breakdown ===== */
+.card-pricing {
     padding-top: 12px;
     border-top: 1px solid var(--border);
 }
 
-.card-price {
-    font-size: 1.2rem;
+.pricing-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+}
+
+.pricing-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.pricing-value {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.pricing-total {
+    margin-top: 6px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--border);
+}
+
+.pricing-total .pricing-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.pricing-total .pricing-value {
+    font-size: 1.15rem;
     font-weight: 700;
     color: var(--accent);
 }
 
-.card-qty {
+/* ===== Grand Total Summary Bar ===== */
+.grand-total-summary {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 24px;
+    background: var(--surface);
+    padding: 16px 24px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.summary-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.summary-label {
     font-size: 0.85rem;
     color: var(--text-muted);
-    background: var(--bg);
-    padding: 4px 10px;
-    border-radius: 20px;
+}
+
+.summary-value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.summary-total .summary-label {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.summary-total .summary-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--accent);
 }
 
 /* ===== Loading ===== */
